@@ -105,10 +105,27 @@ class Main extends Component {
   };
 
   handleCheck = e => {
+    let data = { ...this.state.data };
     let status = { ...this.state.status };
     status[e.target.name] = e.target.checked;
+
+    if (e.target.name === "statusField1") {
+      if (status[e.target.name] === false) {
+        data.inputField1 = null;
+      }
+    } else if (e.target.name === "statusField2") {
+      if (status[e.target.name] === false) {
+        data.inputField2 = null;
+      }
+    } else if (e.target.name === "statusField3") {
+      if (status[e.target.name] === false) {
+        data.inputField3 = null;
+      }
+    }
+
     this.setState({
-      status
+      status,
+      data
     });
   };
 
